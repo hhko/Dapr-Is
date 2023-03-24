@@ -2,7 +2,7 @@
 1. 준비 환경
    - Chocolatey
      - .NET 7+
-     - VSCode + Extensions
+     - VSCode(Extensions : C#, Dapr, ...)
      - PowerShell 7+
      - Windows Terminal
      - Docker Desktop
