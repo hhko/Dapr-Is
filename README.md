@@ -15,9 +15,10 @@ class Program
     }
 }
 ```
-- 첫 번째 매개변수는 대상 애플리케이션의 ID입니다.
-- 두 번째 매개변수는 호출할 메서드의 이름입니다.
-- 세 번째 매개변수는 호출할 메서드의 인수입니다.
+- InvokeMethodAsync 메서드
+  - `"app2"` : 첫 번째 매개변수는 대상 애플리케이션의 ID입니다.
+  - `"hello"` -> `[HttpPost("hello")]` : 두 번째 매개변수는 호출할 메서드의 이름입니다.
+  - `"Hello from app1!"` -> `[FromBody] string message` : 세 번째 매개변수는 호출할 메서드의 인수입니다.
 
 ```cs
 using Dapr;
