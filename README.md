@@ -1,5 +1,20 @@
 
-## HTTP 통신 Helloworld 예제
+# 목쵸
+1. 준비 환경
+   - Chocolatey
+     - .NET 7+
+     - VSCode + Extensions
+     - PowerShell 7+
+     - Windows Terminal
+     - Docker Desktop
+     - Tye
+   - Tye
+1. Dapr 개요
+   - Sidecar 패턴
+   - Dapr 설치
+   - Hello world 예제
+
+## HTTP 통신 Hello world 예제
 
 ```cs
 using Dapr.Client;
@@ -33,3 +48,9 @@ public class HelloController : ControllerBase
     }
 }
 ```
+
+## 참고 자료
+- [ ] https://qiita.com/kazumihirose/items/f7811bf3e5abe405a551
+- [ ] https://bitoftech.net/2022/08/25/tutorial-building-microservice-applications-azure-container-apps-dapr/
+- [ ] https://swoopfunding.com/swoop-engineering/microservices-with-dapr-mini-series-pub-sub-tye/
+- [ ] https://blog.csdn.net/sD7O95O/article/details/120499674
