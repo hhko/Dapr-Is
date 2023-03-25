@@ -30,31 +30,41 @@
 <br/>
 
 ## Dapr CLI 설치
-- 설치 방법
-  - PowerShell 스크립트 설치
-    1. Administrator 권한으로 최신 버전 설치하기
-    1. Administrator 권한으로 특정 버전 설차히기
-    1. Administrator 권한 없이 최신 버전 설치하기
-    1. Administrator 권한 없이 특정 버전 설차히기
-  - 설치 파일(.MSI) 설치
-  - 실행 파일 설치
+### 설치 방법
+- PowerShell 스크립트 설치  
+  `1.` Administrator 권한으로 최신 버전 설치하기  
+  `2.` Administrator 권한으로 특정 버전 설차히기  
+  `3.` Administrator 권한 없이 최신 버전 설치하기  
+  `4.` Administrator 권한 없이 특정 버전 설차히기
+- 설치 파일(.MSI) 설치
+- 실행 파일 설치
 
-### PowerShell 스크립트 설치
-> 설치 스크리븥에서 사용하는 주요 PowerShell 함수
-> - `iwr` : [Invoke-WebRequest](https://learn.microsoft.com/ko-kr/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7.3)
-> - `iex` : [Invoke-Expression](https://learn.microsoft.com/ko-kr/powershell/module/microsoft.powershell.utility/invoke-expression?view=powershell-7.3)
-> - `icm` : [Invoke-Command](https://learn.microsoft.com/ko-kr/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7.3)
->
-> - 웹에서 다운로드 받은 ps1 파일을 인수 전달 없이 평가(실행)할 때는 `Invoke-Expression` 함수를 사용하면 됩니다.
->   - 적용 사례
->     - 최신 버전 설치
->     - 기본 설치 경로
-> - 웹에서 다운로드 받은 ps1 파일을 인수를 전달하여 평가(실행)할 때는 `Invoke-Command` 함수를 사용하면 됩니다.
->   - 적용 사례 : `-ArgumentList`
->     - 특정 버전 설치 : 첫 번째 인수
->     - 특정 설치 경로 : 두 번째 인수
+```powershell
+# 1. Administrator 권한으로 최신 버전 설치하기
+iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1 |
+iex
 
-#### 1. Administrator 권한으로 최신 버전 설치하기
+# 2. Administrator 권한으로 특정 버전 설차히기
+$Env:DAPR_INSTALL_VER = "<dapr_cli_version>"                # $Env:DAPR_INSTALL_VER = "1.9.1"
+$script=iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1
+$block=[ScriptBlock]::Create($script)
+Invoke-Command -ScriptBlock $block -ArgumentList "$Env:DAPR_INSTALL_VER"
+
+# 3. Administrator 권한 없이 최신 버전 설치하기
+$Env:DAPR_INSTALL_DIR = "<your_alt_install_dir_path>"       # $Env:DAPR_INSTALL_DIR = "D:\dapr"
+$script=iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1
+$block=[ScriptBlock]::Create($script)
+Invoke-Command -ScriptBlock $block -ArgumentList "", "$Env:DAPR_INSTALL_DIR"
+
+# 4. Administrator 권한 없이 특정 버전 설차히기
+$Env:DAPR_INSTALL_VER = "<dapr_cli_version>"                # $Env:DAPR_INSTALL_VER = "1.9.1"
+$Env:DAPR_INSTALL_DIR = "<your_alt_install_dir_path>"       # $Env:DAPR_INSTALL_DIR = "D:\dapr"
+$script=iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1
+$block=[ScriptBlock]::Create($script)
+Invoke-Command -ScriptBlock $block -ArgumentList "$Env:DAPR_INSTALL_VER", "$Env:DAPR_INSTALL_DIR"
+```
+
+#### `1.` Administrator 권한으로 최신 버전 설치하기
 ```powershell
 iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1 |
 iex
@@ -63,7 +73,7 @@ iex
   - `iwr(Invoke-WebRequest) -useb` UTF8 형식으로 디코딩하지 않고 가져온 데이터를 바이너리 형식 그대로 반환합니다.
   - `iex(Invoke-Expression)` : Invoke-WebRequest에서 다운로드 받은 `install.ps1` 파일 내용을 평가(실행)합니다.
 
-#### 2. Administrator 권한으로 특정 버전 설차히기
+#### `2.` Administrator 권한으로 특정 버전 설차히기
 ```powershell
 $Env:DAPR_INSTALL_VER = "<dapr_cli_version>"                # $Env:DAPR_INSTALL_VER = "1.9.1"
 $script=iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1
@@ -76,7 +86,7 @@ Invoke-Command -ScriptBlock $block -ArgumentList "$Env:DAPR_INSTALL_VER"
   - `$block` : `install.ps1` 파일 내용을 ScriptBlock으로 생성한니다.
   - `Invoke-Command` : ScriptBlock에 `ArgumentList`을 전달하여 평가(실행)합니다.
 
-#### 3. Administrator 권한 없이 최신 버전 설치하기
+#### `3.` Administrator 권한 없이 최신 버전 설치하기
 ```powershell
 $Env:DAPR_INSTALL_DIR = "<your_alt_install_dir_path>"       # $Env:DAPR_INSTALL_DIR = "D:\dapr"
 $script=iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1
@@ -85,7 +95,7 @@ Invoke-Command -ScriptBlock $block -ArgumentList "", "$Env:DAPR_INSTALL_DIR"
 ```
 - `$Env:DAPR_INSTALL_DIR` : Administrator 권한 없이 제어할 수 있는 설치 경로를 명시해야 합니다.
 
-#### 4. Administrator 권한 없이 특정 버전 설차히기
+#### `4.` Administrator 권한 없이 특정 버전 설차히기
 ```powershell
 $Env:DAPR_INSTALL_VER = "<dapr_cli_version>"                # $Env:DAPR_INSTALL_VER = "1.9.1"
 $Env:DAPR_INSTALL_DIR = "<your_alt_install_dir_path>"       # $Env:DAPR_INSTALL_DIR = "D:\dapr"
@@ -108,6 +118,20 @@ Invoke-Command -ScriptBlock $block -ArgumentList "$Env:DAPR_INSTALL_VER", "$Env:
 <br/>
 
 ## Dapr CLI 설치 세부내용
+### PowerShell 스크립트 주요 내용
+- 설치 스크리븥에서 사용하는 주요 PowerShell 함수
+  - `iwr` : [Invoke-WebRequest](https://learn.microsoft.com/ko-kr/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7.3)
+  - `iex` : [Invoke-Expression](https://learn.microsoft.com/ko-kr/powershell/module/microsoft.powershell.utility/invoke-expression?view=powershell-7.3)
+  - `icm` : [Invoke-Command](https://learn.microsoft.com/ko-kr/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7.3)
+- 웹에서 다운로드 받은 ps1 파일을 인수 전달 없이 평가(실행)할 때는 `Invoke-Expression` 함수를 사용하면 됩니다.
+  - 적용 사례
+    - 최신 버전 설치
+    - 기본 설치 경로
+- 웹에서 다운로드 받은 ps1 파일을 인수를 전달하여 평가(실행)할 때는 `Invoke-Command` 함수를 사용하면 됩니다.
+  - 적용 사례 : `-ArgumentList`
+    - 특정 버전 설치 : 첫 번째 인수
+    - 특정 설치 경로 : 두 번째 인수
+
 ### install.ps1 파일
 - Dapr CLI 설치를 위한 PowerShell 스크립트 파일을 https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1 사이트를 방문하면 확인할 수 있다.  
   `install.ps1` 설치 파일에서 중요하게 확인해야할 부분은 `param` 입니다. `param`에 설치할 버전과 설치할 경로를 전달받고 있습니다.
