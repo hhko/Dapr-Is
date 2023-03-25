@@ -1,17 +1,23 @@
 ## 목차
-1. 준비 환경
-   - Chocolatey
-     - .NET 7+
-     - VSCode(Extensions : C#, Dapr, ...)
-     - PowerShell 7+
-     - Windows Terminal
-     - Docker Desktop
-     - Tye
-   - Tye
-1. Dapr 개요
-   - Sidecar 패턴
-   - Dapr 설치
-   - Hello world 예제
+- 준비 환경
+  - Chocolatey
+    - .NET 7+
+    - Visual Studio Code
+    - PowerShell 7+
+    - Windows Terminal
+    - Docker Desktop
+    - WSL2
+    - Tye
+  - Tye
+- Dapr Docs
+  1. Dapr 개념 Concepts
+     - Sidecar 패턴
+     - Dapr 설치
+     - Hello world 예제
+  1. Dapr 시작하기 Getting Started
+     - [Dapr CLI 설치](./DaprDocs/Part2_GettingStarted/Ch01_InstallTheDaprCli/)
+
+<br/>
 
 ## HTTP 통신 Hello world 예제
 
