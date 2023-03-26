@@ -54,7 +54,17 @@ public class HelloController : ControllerBase
 ```
 
 ## 참고 자료
+- [ ] https://docs.dapr.io/
+- [ ] https://learn.microsoft.com/ko-kr/dotnet/architecture/microservices/
+- [ ] https://github.com/EdwinVW/dapr-traffic-control
+- [ ] https://github.com/EdwinVW/dapr-workshop
+- [ ] https://github.com/dotnet-architecture/eShopOnDapr?WT.mc_id=dotnet-35129-website
+---
 - [ ] https://qiita.com/kazumihirose/items/f7811bf3e5abe405a551
 - [ ] https://bitoftech.net/2022/08/25/tutorial-building-microservice-applications-azure-container-apps-dapr/
 - [ ] https://swoopfunding.com/swoop-engineering/microservices-with-dapr-mini-series-pub-sub-tye/
 - [ ] https://blog.csdn.net/sD7O95O/article/details/120499674
+- [ ] https://visualstudiomagazine.com/articles/2022/05/03/dapr-workshop.aspx
+- [ ] https://www.youtube.com/watch?v=TeHVd3UlfY8
+- [ ] https://www.youtube.com/watch?v=g-gOlkD9lKs
+- [ ] https://www.youtube.com/watch?v=kIfmwmJHNMs

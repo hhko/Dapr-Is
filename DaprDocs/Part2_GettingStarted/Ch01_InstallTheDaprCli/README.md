@@ -1,20 +1,27 @@
-# Dapr CLI 설치하기 Install the Dapr CLI
-- [x] [Install the Dapr CLI](https://docs.dapr.io/getting-started/install-dapr-cli/)
-- [x] [Steps to upgrade Dapr in a self-hosted environment](https://docs.dapr.io/operations/hosting/self-hosted/self-hosted-upgrade/)
-- [ ] [Upgrade CLI command reference](https://docs.dapr.io/reference/cli/dapr-upgrade/)
-- [ ] [Uninstall CLI command reference](https://docs.dapr.io/reference/cli/dapr-uninstall/)
+# Dapr CLI 설치
+
+> ## 요약
+> - Dapr CLI을 Dapr을 운영하기 위한 필수 도구이다.
+> - Dapr CLI 설치
+>   ```powershell
+>   # 최신 버전과 기본 경로($Env:SystemDrive\dapr) 설치
+>   iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1 |
+>   iex
+>
+>   # [특정 버전](https://github.com/dapr/cli/tags)과 특정 경로 설치
+>   $Env:DAPR_INSTALL_VER = "<dapr_cli_version>"                # $Env:DAPR_INSTALL_VER = "1.9.1"
+>   $Env:DAPR_INSTALL_DIR = "<your_alt_install_dir_path>"       # $Env:DAPR_INSTALL_DIR = "D:\dapr"
+>   $script=iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1
+>   $block=[ScriptBlock]::Create($script)
+>   Invoke-Command -ScriptBlock $block -ArgumentList "$Env:DAPR_INSTALL_VER", "$Env:DAPR_INSTALL_DIR"
+>   ```
 
 ## 목차
 - [x] Dapr CLI
 - [x] Dapr CLI 설치
 - [x] Dapr CLI 설치 세부내용
 - [x] Dapr CLI 설치 확인
-- [ ] Dapr CLI 업그레이드/다운그레이드
-- [ ] Dapr CLI 제거
-- [ ] [Dapr Installer Bundle](https://github.com/dapr/installer-bundle)
-- [ ] Operations > Hosting options > Self-Hosted
-  - [Run Dapr in an offline or airgap environment](https://docs.dapr.io/operations/hosting/self-hosted/self-hosted-airgap/)
-  - [Run Dapr in self-hosted mode without Docker](https://docs.dapr.io/operations/hosting/self-hosted/self-hosted-no-docker/)
+- [x] 참고 자료
 
 <br/>
 
@@ -30,6 +37,8 @@
 <br/>
 
 ## Dapr CLI 설치
+![](2023-03-26-14-14-10.png)
+
 ### 설치 방법
 - PowerShell 스크립트 설치  
   `1.` Administrator 권한으로 최신 버전 설치하기  
@@ -40,9 +49,14 @@
 - 실행 파일 설치
 
 ```powershell
-# 1. Administrator 권한으로 최신 버전 설치하기
+# 1.1 Administrator 권한으로 최신 버전 설치하기 : Invoke-Expression
 iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1 |
 iex
+
+# 1.2 Administrator 권한으로 최신 버전 설치하기 : Invoke-Command
+$script=iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1
+$block=[ScriptBlock]::Create($script)
+Invoke-Command -ScriptBlock $block
 
 # 2. Administrator 권한으로 특정 버전 설차히기
 $Env:DAPR_INSTALL_VER = "<dapr_cli_version>"                # $Env:DAPR_INSTALL_VER = "1.9.1"
@@ -198,24 +212,8 @@ Invoke-Command -ScriptBlock $block -ArgumentList "$Env:DAPR_INSTALL_VER", "$Env:
 
 <br/>
 
-## Dapr CLI 제거
-```shell
-dapr uninstall --all
-```
-- `$UserProfile%\.dapr` 폴더와 도커 이미지를 모두 삭제한다.
-
-<br/>
-
-## Dapr CLI 업그레이드
-```shell
-# Darp CLI 제거
-dapr uninstall --all
-
-# Dapr CLI 최신 버전 설치
-iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1 |
-iex
-
-# Dapr CLI 버전 확인
-dapr -v
-```
-
+## 참고 자료
+- [x] [Install the Dapr CLI](https://docs.dapr.io/getting-started/install-dapr-cli/)
+- [x] [Steps to upgrade Dapr in a self-hosted environment](https://docs.dapr.io/operations/hosting/self-hosted/self-hosted-upgrade/)
+- [x] [Uninstall CLI command reference](https://docs.dapr.io/reference/cli/dapr-uninstall/)
+- [x] [Uninstall Dapr in a self-hosted environment](https://docs.dapr.io/operations/hosting/self-hosted/self-hosted-uninstall/)
