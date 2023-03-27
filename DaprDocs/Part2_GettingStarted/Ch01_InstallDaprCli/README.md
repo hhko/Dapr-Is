@@ -1,7 +1,5 @@
 # Dapr CLI 설치
 
-<br/>
-
 ## 요약
 - Dapr CLI을 Dapr을 운영하기 위한 필수 도구입니다.
 - Dapr CLI 설치 PowerShell 스크립트
