@@ -1,5 +1,15 @@
 # Dapr CLI 설치
 
+## 목차
+- [x] 요약
+- [x] Dapr CLI
+- [x] Dapr CLI 설치
+- [x] Dapr CLI 설치 세부내용
+- [x] Dapr CLI 설치 확인
+- [x] 참고 자료
+
+<br/>
+
 ## 요약
 - Dapr CLI을 Dapr을 운영하기 위한 필수 도구입니다.
 - Dapr CLI 설치 PowerShell 스크립트
@@ -16,15 +26,6 @@
   Invoke-Command -ScriptBlock $block -ArgumentList "$Env:DAPR_INSTALL_VER", "$Env:DAPR_INSTALL_DIR"
   ```
 - Dapr CLI 버전 이력 : [링크](https://github.com/dapr/cli/tags)
-
-<br/>
-
-## 목차
-- [x] Dapr CLI
-- [x] Dapr CLI 설치
-- [x] Dapr CLI 설치 세부내용
-- [x] Dapr CLI 설치 확인
-- [x] 참고 자료
 
 <br/>
 
