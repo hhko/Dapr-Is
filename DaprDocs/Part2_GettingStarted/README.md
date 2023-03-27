@@ -9,4 +9,5 @@ https://docs.dapr.io/getting-started/
 > - Could you walk me through what happened?  
 >   어떻게 된 건지 차근차근 설명해 주실 수 있으신가요?
 
-- [Dapr CLI 설치하기](./Ch01_InstallTheDaprCli/)
+- [Dapr CLI 설치](./Ch01_InstallDaprCli/)
+- [Dapr 초기화](./Ch02_InitializeDapr/)

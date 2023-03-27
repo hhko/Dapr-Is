@@ -2,22 +2,22 @@
 
 <br/>
 
-> ## 요약
-> - Dapr CLI을 Dapr을 운영하기 위한 필수 도구이다.
-> - Dapr CLI 설치
->   ```powershell
->   # 최신 버전과 기본 경로($Env:SystemDrive\dapr) 설치
->   iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1 |
->   iex
->
->   # 특정 버전과 특정 경로 설치
->   $Env:DAPR_INSTALL_VER = "<dapr_cli_version>"                # $Env:DAPR_INSTALL_VER = "1.9.1"
->   $Env:DAPR_INSTALL_DIR = "<your_alt_install_dir_path>"       # $Env:DAPR_INSTALL_DIR = "D:\dapr"
->   $script=iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1
->   $block=[ScriptBlock]::Create($script)
->   Invoke-Command -ScriptBlock $block -ArgumentList "$Env:DAPR_INSTALL_VER", "$Env:DAPR_INSTALL_DIR"
->   ```
->   - Dapr CLI 버전 이력 : [링크](https://github.com/dapr/cli/tags)
+## 요약
+- Dapr CLI을 Dapr을 운영하기 위한 필수 도구입니다.
+- Dapr CLI 설치 PowerShell 스크립트
+  ```powershell
+  # 최신 버전과 기본 경로($Env:SystemDrive\dapr) 설치
+  iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1 |
+  iex
+
+  # 특정 버전과 특정 경로 설치
+  $Env:DAPR_INSTALL_VER = "<dapr_cli_version>"                # 예. $Env:DAPR_INSTALL_VER = "1.9.1"
+  $Env:DAPR_INSTALL_DIR = "<your_alt_install_dir_path>"       # 예. $Env:DAPR_INSTALL_DIR = "D:\dapr"
+  $script=iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1
+  $block=[ScriptBlock]::Create($script)
+  Invoke-Command -ScriptBlock $block -ArgumentList "$Env:DAPR_INSTALL_VER", "$Env:DAPR_INSTALL_DIR"
+  ```
+- Dapr CLI 버전 이력 : [링크](https://github.com/dapr/cli/tags)
 
 <br/>
 
@@ -31,8 +31,7 @@
 <br/>
 
 ## Dapr CLI
-- Dapr CLI을 이용하면 Dapr 관련 작업을 더욱 쉽고 빠르게 진행할 수 있습니다.  
-  Dapr CLI가 제공하는 주요 기능은 다음과 같습니다.
+- Dapr CLI은 Dapr Sidecar 관리합니다. 대표적인 관리 기능은 다음과 같습니다.  
   - Dapr와 함께 App. 실행하기 : Run an application with a Dapr sidecar.
   - Dapr 로그 확인하기 : Review sidecar logs.
   - Dapr 서비스 목록 확인하기 : List running services.
@@ -50,8 +49,7 @@
   `2.` Administrator 권한으로 특정 버전 설차히기  
   `3.` Administrator 권한 없이 최신 버전 설치하기  
   `4.` Administrator 권한 없이 특정 버전 설차히기
-- 설치 파일(.MSI) 설치
-- 실행 파일 설치
+- MSI 파일 설치
 
 ```powershell
 # 1.1 Administrator 권한으로 최신 버전 설치하기 : Invoke-Expression
@@ -128,11 +126,6 @@ Invoke-Command -ScriptBlock $block -ArgumentList "$Env:DAPR_INSTALL_VER", "$Env:
 ### MSI 파일 설치
 - [Darp 배포 사이트](https://github.com/dapr/cli/releases)에 방문하여 설치를 원하는 버전의 `dapr.msi` 파일을 다운로드 받습니다.  
   다운로드 받은 파을을 실행하여 설치를 진행합니다.
-
-### 실행 파일 설치
-- [Darp 배포 사이트](https://github.com/dapr/cli/releases)에 방문하여 설치를 원하는 버전의 `dapr_linux_amd64.tar.gz` 파일을 다운로드 받습니다.  
-  다운로드 받은 파을을 압축해제하면 `dapr.exe` 파일을 확인할 수 있습니다.  
-  특정 경로에 복사한 후 `Path` 시스템 환경 변수에 해당 경로를 추가합니다.
 
 <br/>
 
