@@ -1,5 +1,16 @@
 # Dapr 초기화 
-> Initialize Dapr in your local environment
+> Initialize Dapr in your local environment  
+> Dapr CLI을 이용하여 Dapr 런타임을 구성합니다.
+> ```shell
+> # dapr 초기화 : dapr_redis, dapr_zipkin, dapr_placement 컨테이너와 %USERPROFILE%/.dapr 폴더
+> dapr init
+>
+> # dapr 컨테이너 이미지
+> docker image ls
+>
+> # dapr 컨테이너
+> docker container ls
+> ```
 
 ## 목차
 - [x] 요약
@@ -9,19 +20,6 @@
 - [x] 참고 자료
 
 <br/>
-
-## 요약
-- Dapr CLI을 이용하여 Dapr 런타임을 초기화합니다.
-  ```shell
-  # dapr 초기화 : dapr_redis, dapr_zipkin, dapr_placement 컨테이너와 %USERPROFILE%/.dapr 폴더
-  dapr init
-
-  # dapr 컨테이너 이미지
-  docker image ls
-
-  # dapr 컨테이너
-  docker container ls
-  ```
 
 ## Dapr 초기화 개요
 - Dapr 초기화 작업을 수행하면 관련 컨테이너를 다운로드 받아 실행하고 컴포넌트 정의 폴더를 생성합니다.
