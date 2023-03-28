@@ -82,8 +82,30 @@ Invoke-Command -ScriptBlock $block -ArgumentList "$Env:DAPR_INSTALL_VER", "$Env:
 
 #### `1.` Administrator 권한으로 최신 버전 설치하기
 ```powershell
+# 최신 버전으로 기본 경로 설치
 iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1 |
 iex
+
+# 설치 과정
+PS C:\Users\고형호> iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1 |
+>> iex
+
+WARNING: Dapr is detected - C:\dapr\dapr.exe
+CLI version: 1.10.0
+Runtime version: n/a
+Reinstalling Dapr...
+Creating C:\dapr directory
+Downloading https://api.github.com/repos/dapr/cli/releases/assets/95850842 ...
+Extracting C:\dapr\dapr_windows_amd64.zip...
+CLI version: 1.10.0
+Runtime version: n/a
+Clean up C:\dapr\dapr_windows_amd64.zip...
+Try to add C:\dapr to User Path Environment variable...
+Skipping to add C:\dapr to User Path - c:\dapr;C:\Users\고형호\.dapr\bin; ...
+
+Dapr CLI is installed successfully.
+To get started with Dapr, please visit https://docs.dapr.io/getting-started/ .
+Ensure that Docker Desktop is set to Linux containers mode when you run Dapr in self hosted mode.
 ```
 - 주요 내용 : install.ps1 파일을 다운로드 받아 실행합니다.
   - `iwr(Invoke-WebRequest) -useb` UTF8 형식으로 디코딩하지 않고 가져온 데이터를 바이너리 형식 그대로 반환합니다.
