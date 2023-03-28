@@ -36,7 +36,9 @@
 ```shell
 # Windows Terminal을 관리자 권한으로 실행(Run as administrator)합니다.
 
+#
 # dapr 런타임 초기화 : dapr init
+#
 PS C:\Users\고형호> dapr init
 Making the jump to hyperspace...
 Container images will be pulled from Docker Hub
@@ -50,22 +52,28 @@ dapr_zipkin container is running.
 Use `docker ps` to check running containers.
 Success! Dapr is up and running. To get started, go here: https://aka.ms/dapr-getting-started
 
+#
 # dapr 버전 확인 : dapr -v
+#
 PS C:\Users\고형호> dapr -v
 CLI version: 1.10.0
 Runtime version: 1.10.4
 
+#
 # dapr 관련 컨테이너 이미지 : docker image ls
 #   - `dapr_redis` : 로컬 상태 저장과 메시지 브로커을 위한 Redis 컨테이너 인스턴스를 실행합니다.
 #   - `dapr_zipkin` : Observability(관찬 가능성)을 위한 Zipkin 컨테이너 인스턴스를 실행합니다.
 #   - `dapr_placement` : 로컬 액터 모데을 위한 Dapr placement service 컨테이너 인스턴스를 실행합니다.
+#
 PS C:\Users\고형호> docker image ls
 REPOSITORY          TAG       IMAGE ID       CREATED        SIZE
 redis               6         55ee3f86a3bb   5 days ago     113MB
 daprio/dapr         1.10.4    16ab4ab09c63   11 days ago    309MB
 openzipkin/zipkin   latest    ad5bf93e3f50   3 months ago   165MB
 
+#
 # dapr 관련 컨테이너 : docker container ls
+#
 PS C:\Users\고형호> docker container ls
 CONTAINER ID   IMAGE                COMMAND                  CREATED              STATUS                        PORTS                              NAMES
 b81deb7baa38   daprio/dapr:1.10.4   "./placement"            About a minute ago   Up About a minute             0.0.0.0:6050->50005/tcp            dapr_placement
@@ -77,10 +85,10 @@ b81deb7baa38   daprio/dapr:1.10.4   "./placement"            About a minute ago 
 
 ## Dapr 컴포넌트 폴더
 ```shell
-# 
+# 컴포넌트 폴더 열기
 explorer "%USERPROFILE%\.dapr\"
 
-# %USERPROFILE%\.dapr\ 폴더 구조
+# %USERPROFILE%\.dapr\ 폴더 구조 확인하기
 .dapr
 │   config.yaml
 │
