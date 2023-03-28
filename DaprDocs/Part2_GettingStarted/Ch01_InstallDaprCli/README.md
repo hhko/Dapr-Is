@@ -1,31 +1,26 @@
 # Dapr CLI 설치
+> - Dapr CLI을 Dapr을 운영하기 위한 필수 도구입니다.
+> - Dapr CLI 설치 PowerShell 스크립트
+>   ```powershell
+>   # 최신 버전과 기본 경로($Env:SystemDrive\dapr) 설치
+>   iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1 |
+>   iex
+> 
+>   # 특정 버전과 특정 경로 설치
+>   $Env:DAPR_INSTALL_VER = "<dapr_cli_version>"                # 예. $Env:DAPR_INSTALL_VER = "1.9.1"
+>   $Env:DAPR_INSTALL_DIR = "<your_alt_install_dir_path>"       # 예. $Env:DAPR_INSTALL_DIR = "D:\dapr"
+>   $script=iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1
+>   $block=[ScriptBlock]::Create($script)
+>   Invoke-Command -ScriptBlock $block -ArgumentList "$Env:DAPR_INSTALL_VER", "$Env:DAPR_INSTALL_DIR"
+>   ```
+> - Dapr CLI 버전 이력 : [링크](https://github.com/dapr/cli/tags)
 
 ## 목차
-- [x] 요약
 - [x] Dapr CLI
 - [x] Dapr CLI 설치
 - [x] Dapr CLI 설치 세부내용
 - [x] Dapr CLI 설치 확인
 - [x] 참고 자료
-
-<br/>
-
-## 요약
-- Dapr CLI을 Dapr을 운영하기 위한 필수 도구입니다.
-- Dapr CLI 설치 PowerShell 스크립트
-  ```powershell
-  # 최신 버전과 기본 경로($Env:SystemDrive\dapr) 설치
-  iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1 |
-  iex
-
-  # 특정 버전과 특정 경로 설치
-  $Env:DAPR_INSTALL_VER = "<dapr_cli_version>"                # 예. $Env:DAPR_INSTALL_VER = "1.9.1"
-  $Env:DAPR_INSTALL_DIR = "<your_alt_install_dir_path>"       # 예. $Env:DAPR_INSTALL_DIR = "D:\dapr"
-  $script=iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1
-  $block=[ScriptBlock]::Create($script)
-  Invoke-Command -ScriptBlock $block -ArgumentList "$Env:DAPR_INSTALL_VER", "$Env:DAPR_INSTALL_DIR"
-  ```
-- Dapr CLI 버전 이력 : [링크](https://github.com/dapr/cli/tags)
 
 <br/>
 
