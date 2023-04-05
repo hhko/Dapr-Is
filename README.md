@@ -14,8 +14,11 @@
     - Dapr 설치
     - Hello world 예제
   - Dapr 시작하기 Getting Started
-    - [Dapr CLI 설치](./DaprDocs/Part2_GettingStarted/Ch01_InstallDaprCli/)
-    - [Dapr 초기화](./DaprDocs/Part2_GettingStarted/Ch02_InitializeDapr/)
+    - Dapr 설치
+      - [Dapr CLI 설치](./DaprDocs/Part2_GettingStarted/Ch01_InstallDaprCli/)
+      - [Dapr Runtime 초기화](./DaprDocs/Part2_GettingStarted/Ch02_InitializeDapr/)
+    - Dapr Helloworld 예제
+      - [Dapr Hello Sidecar 예제](./DaprDocs/Part2_GettingStarted/Ch03_HelloSidecar/)
 
 <br/>
 

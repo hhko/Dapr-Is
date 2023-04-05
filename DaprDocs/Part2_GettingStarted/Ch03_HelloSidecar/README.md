@@ -1,4 +1,91 @@
-# Dapr API
+# Dapr Hello Sidecar 예제
+
+## Dapr Sidecar 실행
+```shell
+dapr run --app-id myapp --dapr-http-port 3500
+```
+![](2023-04-05-22-56-36.png)
+
+## Dapr Sidecar 데이터 생성(Create)
+```shell
+#
+# Dapr Sidecar HTTP API
+#   - http://localhost:{--dapr-http-port}/v1.0/state/statestore
+#
+Invoke-RestMethod `
+    -Method Post `
+    -ContentType 'application/json' `
+    -Uri 'http://localhost:3500/v1.0/state/statestore' `
+    -Body '[{ "key": "name", "value": "Hello Sidecar"}]'
+```
+
+
+```shell
+# C o
+# http://localhost:{--dapr-http-port}/v1.0/state/statestore
+# R o
+# U x
+# D o
+# http://localhost:{--dapr-http-port}/v1.0/state/statestore/{키}
+
+
+
+#
+# JSON
+#
+# [
+#   {
+#     "key": "name",
+#     "value": "Bruce Wayne"
+#   }
+# ]
+
+# docker container exec -it dapr_redis redis-cli
+# 127.0.0.1:6379> keys *
+# (empty array)
+
+#
+# Dapr API 데이터 추가 : 키와 값 추가
+#
+Invoke-RestMethod `
+    -Method Post `
+    -ContentType 'application/json' `
+    -Uri 'http://localhost:3500/v1.0/state/statestore' `
+    -Body '[{ "key": "name", "value": "Bruce Wayne"}]'
+
+#
+# Dapr API 데이터 확인 : 값 확인
+#
+Invoke-RestMethod `
+    -Uri 'http://localhost:3500/v1.0/state/statestore/name'
+Bruce Wayne
+
+# 컨테이너 인스턴스 접속
+docker container exec -it dapr_redis redis-cli
+
+# 컨테이너 인스턴스 키 확인
+127.0.0.1:6379> keys *
+1) "myapp||name"
+
+| --app-id  | myapp     |
+| key       | name      |
+
+# 컨테이너 인스턴스 값 확인
+127.0.0.1:6379> hgetall "myapp||name"
+1) "data"
+2) "\"Bruce Wayne\""
+3) "version"
+4) "1"
+
+#
+# Dapr API 데이터 삭제 : 키
+#
+Invoke-RestMethod `
+    -Method Delete `
+    -ContentType 'application/json' `
+    -Uri 'http://localhost:3500/v1.0/state/statestore/name'
+```
+
 
 ```shell
 PS C:\> dapr run --app-id myapp --dapr-http-port 3500
